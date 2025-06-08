@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cf-dark-red: #ff0000;
+  --color-cf-dark-gray: #636363;
+  --color-cf-gray: #636363;
+}
