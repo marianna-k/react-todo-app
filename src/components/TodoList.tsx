@@ -3,13 +3,14 @@ import {useState} from "react";
 import type {TodoListProps} from "../types.ts";
 
 
-const TodoList = ({todos, dispatch}: TodoListProps) =>{
+const TodoList = ({todos, dispatch, inputRef}: TodoListProps) =>{
     const [editId, setEditId] = useState<number | null>(null);
     const [editText, setEditText] = useState("");
 
     const handleEdit = (id: number, text: string) => () => {
         setEditId(id);
         setEditText(text);
+        inputRef.current?.focus();
     }
 
     const handleSave = (id: number) => () =>{
@@ -25,6 +26,7 @@ const TodoList = ({todos, dispatch}: TodoListProps) =>{
 
     const handleDelete = (id: number) => () => {
         dispatch({type: "DELETE", payload: id});
+        inputRef.current?.focus();
     }
 
     const handleToggle = (id: number) => () => {
